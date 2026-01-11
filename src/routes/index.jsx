@@ -31,11 +31,11 @@ const router = createBrowserRouter([
                 path: "/services",
                 element: <Services />
             },
+            {
+                path: "*",
+                element: <NotFound />
+            },
         ]
-    },
-    {
-        path: "*",
-        element: <NotFound />
     }
 ])
 
