@@ -34,7 +34,7 @@ const Header = ({ show }) => {
         className="fixed w-full z-50 transition-all duration-300"
       >
         {/* Top Info Bar */}
-        <div className={`hidden lg:block py-2 top-bar-gradient text-white transition-all duration-300 ${scrolled ? 'h-0 opacity-0 overflow-hidden' : 'h-auto opacity-100'}`}>
+        <div className={`hidden lg:block py-2 top-bar-gradient text-white transition-all duration-300`}>
           <div className="container mx-auto flex justify-between items-center px-4">
             <div className="flex gap-6 text-sm">
               <div className="flex items-center gap-2">

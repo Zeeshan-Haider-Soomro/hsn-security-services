@@ -6,16 +6,27 @@ import ChatMessage from "./ChatMessage";
 
 const ChatBot = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [messages, setMessages] = useState([
-        {
-            text: "Hello! I'm the HSN Security AI assistant. How can I help you today?",
-            isUser: false,
-        },
-    ]);
+    
+    // Initialize messages from localStorage if available
+    const [messages, setMessages] = useState(() => {
+        const savedMessages = localStorage.getItem("chat_messages");
+        return savedMessages 
+            ? JSON.parse(savedMessages) 
+            : [{
+                text: "Hello! I'm the HSN Security AI assistant. How can I help you today?",
+                isUser: false,
+            }];
+    });
+
     const [inputMessage, setInputMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const messagesEndRef = useRef(null);
+
+    // Save messages to localStorage whenever they change
+    useEffect(() => {
+        localStorage.setItem("chat_messages", JSON.stringify(messages));
+    }, [messages]);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
